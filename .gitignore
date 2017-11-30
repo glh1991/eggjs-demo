@@ -8,5 +8,6 @@ coverage/
 .idea/
 run/
 .DS_Store
+.vscode
 *.sw*
 *.un~

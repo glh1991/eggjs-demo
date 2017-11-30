@@ -1,9 +1,10 @@
 'use strict';
-const Controller = require('egg').Controller;
+const Controller = require('../base')
 
 class UserController extends Controller {
   async index(ctx) {
-    ctx.body = await ctx.model.User.find({});
+    let users = await ctx.model.User.find({});
+    this.success(users);
   }
 }
 

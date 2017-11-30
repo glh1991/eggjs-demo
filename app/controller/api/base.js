@@ -1,14 +1,15 @@
-module.exports = app => {
-  class BaseController extends app.Controller {
-    // 成功
-    success(data) {
-      this.ctx.body = {
-        status: 200,
-        success: true,
-        data
-      };
-    }
+const Controller = require('egg').Controller;
+class BaseController extends Controller {
+  success(data) {
+    this.ctx.body = {
+      success: true,
+      data,
+    };
+  }
 
-    
+  notFound(msg) {
+    msg = msg || 'not found';
+    this.ctx.throw(404, msg);
   }
 }
+module.exports = BaseController;
