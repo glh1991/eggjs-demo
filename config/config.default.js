@@ -11,8 +11,8 @@ module.exports = appInfo => {
 
   config.mongoose = {
     url: 'mongodb://127.0.0.1:27017/nico',
-    options: {}
-  }
+    options: {},
+  };
 
   return config;
 };
