@@ -14,5 +14,17 @@ module.exports = appInfo => {
     options: {},
   };
 
+  config.jwt = {
+    secret: 'nicokids!',
+    enable: true, // default is false
+    match: '/api/v1/users'
+  };
+
+  config.security =  {
+      csrf: {
+          enable: false,
+      },
+  };
+
   return config;
 };
