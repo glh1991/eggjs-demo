@@ -9,10 +9,6 @@ module.exports = appInfo => {
   return config;
 };
 
-exports.middleware = [
-  'auth',
-];
-
 module.exports = pluginConfig => {
   const config = exports = {};
   config.mongoose = {
@@ -32,3 +28,7 @@ module.exports = pluginConfig => {
   }
   return config;
 }
+
+exports.middleware = [
+  'auth',
+];

@@ -15,9 +15,7 @@ module.exports = options => {
         errorMsg: "token错误"
       };
     }
-    // vf: { iss: '5a22280e16ce9b5d695fe283',
-    //   exp: 1512187978051,
-    //   iat: 1512187918 }
+
     if (vf.exp < Date.now()) {
       return ctx.body = {
         status: 403,
@@ -25,6 +23,15 @@ module.exports = options => {
         errorMsg: "token过期"
       };
     }
+    ctx.current_user = await ctx.model.User.findOne({_id: vf.iss})
+    if (!ctx.current_user) {
+      return ctx.body = {
+        status: 403,
+        success: false,
+        errorMsg: "用户不存在"
+      }
+    }
+
     await next();
   }
 };
