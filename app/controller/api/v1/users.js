@@ -4,15 +4,12 @@ const Controller = require('../base');
 class UsersController extends Controller {
 
   async show(ctx) {
-    const user = await ctx.model.User.findOne({_id: ctx.params.id});
+    const user = await ctx.service.user.find(ctx.params.id);
     this.success(user);
   }
 
   async update(ctx) {
-    await ctx.model.User.where({"phone": ctx.request.body.phone}).update({$set: {name: ctx.request.body.name}}, function (err, count) {
-      console.log(`err: ${err}. count: ${count}`)
-    });
-
+    await ctx.service.user.updateNameByPhone(ctx.request.body.phone, ctx.request.body.name)
     this.success()
   }
 }
