@@ -6,25 +6,29 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1511962744685_3209';
 
-  // add your config here
-  config.middleware = [];
+  return config;
+};
 
+exports.middleware = [
+  'auth',
+];
+
+module.exports = pluginConfig => {
+  const config = exports = {};
   config.mongoose = {
     url: 'mongodb://127.0.0.1:27017/nico',
     options: {},
   };
 
+  config.security =  {
+    csrf: {
+      enable: false,
+    },
+  };
+
   config.jwt = {
     secret: 'nicokids!',
-    enable: true, // default is false
-    match: '/api/v1/users'
-  };
-
-  config.security =  {
-      csrf: {
-          enable: false,
-      },
-  };
-
+    enable: false
+  }
   return config;
-};
+}
