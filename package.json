@@ -7,7 +7,8 @@
     "egg": "^2.0.0",
     "egg-jwt": "^2.2.0",
     "egg-mongoose": "^2.1.1",
-    "egg-scripts": "^2.1.0"
+    "egg-scripts": "^2.1.0",
+    "koa-compress": "^2.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

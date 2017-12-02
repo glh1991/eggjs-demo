@@ -2,15 +2,11 @@
 
 module.exports = appInfo => {
   const config = exports = {};
+  // TODO 为什么middleware配置在这里, api/v1/sign_in会404????
+  // config.middleware = [
+  //   'auth',
+  // ];
 
-  // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1511962744685_3209';
-
-  return config;
-};
-
-module.exports = pluginConfig => {
-  const config = exports = {};
   config.mongoose = {
     url: 'mongodb://127.0.0.1:27017/nico',
     options: {},
@@ -30,5 +26,5 @@ module.exports = pluginConfig => {
 }
 
 exports.middleware = [
-  'auth',
+  'auth', 'compress'
 ];

@@ -12,7 +12,7 @@ class SessionsController extends Controller {
     }
     user = ctx.model.User({"phone": phone})
     await user.save()
-    const token = ctx.app.jwt.sign({iss: user._id, exp: Date.now() + 60 * 60 * 1000}, ctx.app.config.jwt.secret)
+    const token = _generateToken(ctx, user)
     let responseBody = {"user": user, "token:": token}
     this.success(responseBody);
   }
