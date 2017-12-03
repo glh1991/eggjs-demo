@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = appInfo => {
+module.exports = () => {
   const config = exports = {};
   // TODO 为什么middleware配置在这里, api/v1/sign_in会404????
   // config.middleware = [
@@ -12,7 +12,7 @@ module.exports = appInfo => {
     options: {},
   };
 
-  config.security =  {
+  config.security = {
     csrf: {
       enable: false,
     },
@@ -20,11 +20,24 @@ module.exports = appInfo => {
 
   config.jwt = {
     secret: 'nicokids!',
-    enable: false
-  }
+    enable: false,
+  };
   return config;
-}
+};
 
 exports.middleware = [
   'auth', 'compress'
 ];
+
+exports.bizerror = {
+  breakDefault: true, // disable default error handler
+  sendClientAllParams: true, // return error bizParams to user
+  interceptAllError: true, // handle all exception, not only bizError exception
+};
+
+exports.onerror = {
+  json(err, ctx) {
+    ctx.body = { msg: 'error' };
+    ctx.status = 200;
+  }
+}

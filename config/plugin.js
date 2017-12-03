@@ -13,4 +13,7 @@ exports.jwt = {
   package: 'egg-jwt',
 };
 
-
+exports.bizerror = {
+  enable: true,
+  package: 'egg-bizerror',
+};

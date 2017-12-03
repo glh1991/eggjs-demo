@@ -5,8 +5,10 @@
   "private": true,
   "dependencies": {
     "egg": "^2.0.0",
+    "egg-bizerror": "^2.1.2",
     "egg-jwt": "^2.2.0",
     "egg-mongoose": "^2.1.1",
+    "egg-onerror": "^2.0.0",
     "egg-scripts": "^2.1.0",
     "koa-compress": "^2.0.0"
   },

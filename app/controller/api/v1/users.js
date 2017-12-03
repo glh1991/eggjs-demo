@@ -5,12 +5,11 @@ class UsersController extends Controller {
 
   async show(ctx) {
     const user = await ctx.service.user.find(ctx.params.id);
-    this.success(user);
+    ctx.body = user
   }
 
   async update(ctx) {
-    await ctx.service.user.updateNameByPhone(ctx.request.body.phone, ctx.request.body.name)
-    this.success()
+    await ctx.service.user.updateNameByPhone(ctx.request.body.phone, ctx.request.body.name);
   }
 }
 
